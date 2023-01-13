@@ -51,6 +51,8 @@ function App() {
     <div className="App">
       <header>
         <h1>Passing Thoughts</h1>
+        <h2>Bucheli Web © 2023</h2>
+        <p>Release your thoughts, but don't worry, they'll disappear in 15 seconds!!!</p>
       </header>
       <main>
         <AddThoughtForm addThought={addThought} />

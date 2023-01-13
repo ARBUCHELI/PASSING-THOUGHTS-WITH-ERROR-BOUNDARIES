@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #b7d7e8;
     font-size: 16pt;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -17,6 +18,8 @@ body {
   input[type='submit'],
   button {
     cursor: pointer;
+    background-color: #034f84;
+    color: white;
   }
   
   .App {
@@ -37,7 +40,7 @@ body {
   
   .AddThoughtForm input {
     padding: 1.5rem;
-    border: 1px solid #666;
+    border: 1px solid #034f84;
     border-radius: 3px;
   }
   
@@ -56,6 +59,7 @@ body {
     margin-bottom: 1rem;
     border-radius: 3px;
     background-color: #eee;
+    color: #034f84;
   }
   
   .Thought .remove-button {
@@ -64,9 +68,30 @@ body {
     border: 0;
     border-radius: 3px;
     background: transparent;
+    color: black;
   }
   
   .Thought .remove-button:hover {
     color: #fff;
     background-color: #000;
+  }
+
+  h1 {
+    color: #484f4f;
+  }
+
+  h2 {
+    color: #484f4f;
+  }
+
+  p {
+    color: #484f4f;
+  }
+
+  footer {
+    text-align: center;
+    font-weight: bold;
+    color: #484f4f;
+    margin-top: 90%;
+    margin-bottom: 30%;
   }
