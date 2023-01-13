@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { AddThoughtForm } from "./AddThoughtForm";
 import { Thought } from "./Thought";
 import { generateId, getNewExpirationTime } from "./utilities";
 import { logError } from "./error-logging-service";
+import { ErrorBoundary } from 'react-error-boundary';
 
 const createThought = (text) => {
   return {
@@ -31,9 +32,20 @@ function App() {
   };
   
   // TODO: Upgrade this fallback component!
-  const BlankThought = () => {
-    return <p>Oops</p>;
+  const BlankThought = ({ error, resetErrorBoundary, thought }) => {
+  thought.text = error.message;
+  const removeAndReset = () => {
+    removeThought(thought.id)
+    resetErrorBoundary();
   }
+  return (
+    <Thought 
+      removeThought={removeAndReset} 
+      key={thought.id} 
+      thought={thought} 
+    />
+  );
+};
 
   return (
     <div className="App">
@@ -44,11 +56,17 @@ function App() {
         <AddThoughtForm addThought={addThought} />
         <ul className="thoughts">
           {thoughts.map((thought) => (
-            <Thought
-              removeThought={removeThought}
-              key={thought.id}
-              thought={thought}
-            />
+            <ErrorBoundary onError={logError}FallbackComponent={(props) => (
+              <BlankThought {...props}
+                thought={thought}
+              />
+            )}>
+              <Thought
+                removeThought={removeThought}
+                key={thought.id}
+                thought={thought}
+              />
+            </ErrorBoundary>
           ))}
         </ul>
       </main>

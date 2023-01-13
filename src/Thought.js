@@ -19,7 +19,7 @@ export function Thought(props) {
     return ()=>{
       clearTimeout(timesUp)
     }
-  },[thought])
+  },[thought, removeThought])
 
 
   return (
